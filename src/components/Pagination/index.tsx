@@ -1,5 +1,14 @@
 import { Flex, Button, SimpleGrid } from "@chakra-ui/react";
 
+type PaginationProps = {
+  pageCount: number;
+  canPrevious: boolean;
+  canNext: boolean;
+  goto: (page: number) => void;
+  previous: () => void;
+  next: () => void;
+};
+
 export default function Pagination({
   pageCount,
   goto,
@@ -7,7 +16,7 @@ export default function Pagination({
   next,
   canPrevious,
   canNext,
-}: any) {
+}: PaginationProps) {
   const buttonProps = {
     bg: "gray.900",
     color: "gray.200",

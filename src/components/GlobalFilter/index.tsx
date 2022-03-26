@@ -8,7 +8,12 @@ import {
 } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 
-export default function GlobalFilter({ setGlobalFilter, total }: any) {
+type FilterProps = {
+  total: number;
+  setGlobalFilter: (value: string) => void;
+};
+
+export default function GlobalFilter({ setGlobalFilter, total }: FilterProps) {
   return (
     <Box bg="gray.900" roundedTop="xl">
       <InputGroup>

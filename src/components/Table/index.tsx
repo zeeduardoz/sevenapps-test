@@ -10,7 +10,17 @@ import { Table, Thead, Tr, Th, Tbody, Td, Box } from "@chakra-ui/react";
 import Pagination from "../Pagination/index";
 import GlobalFilter from "../GlobalFilter/index";
 
-export default function TableGrid({ columns, data }: any) {
+type UserProps = {
+  name: string;
+  age: number;
+};
+
+type Grid = {
+  data: UserProps[];
+  columns: any;
+};
+
+export default function TableGrid({ columns, data }: Grid) {
   const {
     getTableProps,
     getTableBodyProps,
@@ -20,13 +30,11 @@ export default function TableGrid({ columns, data }: any) {
     rows,
     canPreviousPage,
     canNextPage,
-    pageOptions,
     pageCount,
     gotoPage,
     nextPage,
     previousPage,
     setGlobalFilter,
-    state: { pageIndex },
   } = useTable(
     {
       columns,
@@ -125,10 +133,7 @@ export default function TableGrid({ columns, data }: any) {
         </Tbody>
       </Table>
       <Pagination
-        page={page}
         pageCount={pageCount}
-        pageIndex={pageIndex}
-        pageOptions={pageOptions}
         goto={gotoPage}
         previous={previousPage}
         next={nextPage}
